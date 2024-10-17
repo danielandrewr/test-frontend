@@ -39,7 +39,7 @@ const SelectionForm: React.FC<SelectionFormProps> = ({ setSelectedAlgorithm }) =
         // Validate input before adding
         if (selectedParam === 'max_depth' || selectedParam === 'n_estimators') {
             if (!Number.isInteger(newValue)) {
-                setError("Please enter a valid integer.");
+                setError("Please enter a valid integer");
                 return;
             }
         }
