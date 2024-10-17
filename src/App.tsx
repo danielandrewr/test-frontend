@@ -1,24 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import SelectionForm from './View/SelectionForm';
+import PredictionForm from './View/PredictionForm';
+import ModelStatusView from './View/ModelStatusView';
+import { Algorithm } from './Types/Types';
 
-function App() {
+const App: React.FC = () => {
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState<Algorithm>(Algorithm.DECISION_TREE)
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>ML Model Train and Predict</h1>
       </header>
+
+      <section>
+        <h2>Check Model Status</h2>
+        <ModelStatusView />
+      </section>
+
+      <section>
+        <h2>Model Training</h2>
+        <SelectionForm setSelectedAlgorithm={setSelectedAlgorithm} />
+      </section>
+
+      <section>
+        <h2>Prediction</h2>
+        <PredictionForm selectedAlgorithm={selectedAlgorithm}/>
+      </section>
     </div>
   );
 }
