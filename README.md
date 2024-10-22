@@ -11,7 +11,7 @@ This is the React-based frontend for interacting with the Machine Learning API. 
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-repo/frontend
+   git clone https://github.com/danielandrewr/test-frontend
    cd frontend
    ```
 
