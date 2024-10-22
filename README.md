@@ -34,6 +34,8 @@ The frontend interacts with the backend using JWT authentication. Before making 
 localStorage.setItem("token", "<your_jwt_token>");
 ```
 
+Note: For information on how to retrieve the token, please refer to [this](https://github.com/danielandrewr/test-backend?tab=readme-ov-file#usage)
+
 ## API Integration
 The frontend interacts with the backend using Axios, sending the token in the Authorization header:
 ```js
