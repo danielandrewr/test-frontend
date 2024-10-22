@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import SelectionForm from './View/SelectionForm';
 import PredictionForm from './View/PredictionForm';
@@ -12,7 +11,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>ML Model Train and Predict</h1>
+        <h1>Fata Organa Python and TypeScript Assessment</h1>
       </header>
 
       <section>

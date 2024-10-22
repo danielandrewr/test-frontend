@@ -30,9 +30,9 @@ const SelectionForm: React.FC<SelectionFormProps> = ({ setSelectedAlgorithm }) =
         setAlgorithm(selectedAlgorithm);
         setSelectedAlgorithm(selectedAlgorithm);
         setParams({});
-        setSelectedParam('max_depth'); // Reset selected parameter when algorithm changes
-        setNewValue(undefined); // Reset input field when algorithm changes
-        setError(""); // Reset any error message
+        setSelectedParam('max_depth');
+        setNewValue(undefined); 
+        setError("");
     };
 
     const handleParamAddition = () => {
@@ -49,8 +49,8 @@ const SelectionForm: React.FC<SelectionFormProps> = ({ setSelectedAlgorithm }) =
                 ...params,
                 [selectedParam]: [...(params[selectedParam] || []), newValue]
             });
-            setNewValue(""); // Clear the input after adding
-            setError(""); // Reset error
+            setNewValue(""); 
+            setError("");
         }
     };
 
@@ -64,22 +64,29 @@ const SelectionForm: React.FC<SelectionFormProps> = ({ setSelectedAlgorithm }) =
     };
 
     const handleCriterionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setNewValue(event.target.value); // Only set the new value without adding it immediately
+        setNewValue(event.target.value);
     };
 
     const handleTraining = async (event: React.FormEvent) => {
         event.preventDefault();
+
+        const token = localStorage.getItem('token')
         try {
-            console.log(algorithm)
-            console.log(params)
+            // console.log(algorithm)
+            // console.log(params)
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/train`, {
                 algorithm,
                 param_grid: params
-            });
-            setMessage(`Successfully trained model. Best Params: ${JSON.stringify(response.data.best_params)}`);
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+            })
+            console.log(response.data)
+            setMessage(`Successfully trained model. Best Params: ${JSON.stringify(response.data.best_params_)}`);
         } catch (e) {
             setMessage('Model Training Failed');
-            console.error(e);
+            console.error(e)
         }
     };
 

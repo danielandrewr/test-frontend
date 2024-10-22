@@ -4,22 +4,23 @@ export enum Algorithm {
 }
 
 export interface Hyperparameters {
-    max_depth?: number[];
-    criterion?: string[];
-    n_estimators?: number[];
+    max_depth?: number[]
+    criterion?: string[]
+    n_estimators?: number[]
 }
 
 export interface TrainResult {
-    best_params_: Record<string, any>;
-    best_score: number;
+    best_params_: Record<string, any>
+    best_score: number
 }
 
 export interface PredictionInput {
-    input: number[];
+    input: number[]
 }
 
 export interface ModelStatus {
-    is_trained: boolean;
-    model_algorithm: Algorithm | null;
-    best_params: Record<string, any> | null;
+    is_trained: boolean
+    model_algorithm: Algorithm | null
+    best_params: Record<string, any> | null
+    training_accuracy: number | null
 }
